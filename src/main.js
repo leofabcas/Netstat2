@@ -177,4 +177,39 @@ if (canvas) {
     animate();
 }
 
+// --- Mobile Menu Toggle ---
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon = document.getElementById('menu-icon');
+const mobileMenuLinks = document.getElementById('mobile-menu-links');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+if (mobileMenuBtn && mobileMenu) {
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenuLinks.classList.remove('translate-y-8');
+            menuIcon.textContent = 'close';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        } else {
+            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenuLinks.classList.add('translate-y-8');
+            menuIcon.textContent = 'menu';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (isMenuOpen) toggleMenu();
+        });
+    });
+}
+
 console.log('NETSTAT-AR Final Animations Initialized');

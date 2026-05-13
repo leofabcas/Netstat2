@@ -31,9 +31,11 @@
   <nav
     class="fixed top-0 left-0 right-0 z-50 grid grid-cols-[1fr_auto] md:grid-cols-[auto_1fr_auto] items-center justify-between max-w-5xl px-6 md:px-8 bg-slate-950/40 backdrop-blur-xl rounded-full mt-6 mx-auto w-[90%] md:w-fit py-3 border border-white/10 shadow-2xl transition-all duration-500">
     <a href="#"
-      class="text-lg md:text-xl font-black tracking-widest text-white uppercase font-['Plus_Jakarta_Sans'] hover:opacity-80 transition-opacity cursor-pointer">NETSTAT
+      class="text-lg md:text-xl font-black tracking-widest text-white uppercase font-['Plus_Jakarta_Sans'] hover:opacity-80 transition-opacity cursor-pointer z-50 relative">NETSTAT
       -AR</a>
-    <div class="hidden md:flex items-center justify-center gap-8 mx-12">
+    
+    <!-- Desktop Menu (visible from 768px+) -->
+    <div class="hidden md:flex items-center justify-center gap-6 lg:gap-8 mx-6 lg:mx-12">
       <a class="font-['Plus_Jakarta_Sans'] tracking-tighter uppercase text-xs font-bold text-white/50 hover:text-white transition-colors duration-500"
         href="#telemetry">Experiencia</a>
       <a class="font-['Plus_Jakarta_Sans'] tracking-tighter uppercase text-xs font-bold text-white/50 hover:text-white transition-colors duration-500"
@@ -41,11 +43,32 @@
       <a class="font-['Plus_Jakarta_Sans'] tracking-tighter uppercase text-xs font-bold text-white/50 hover:text-white transition-colors duration-500"
         href="#vision">Vision</a>
     </div>
-    <a href="#protocol"
-      class="bg-white text-slate-950 px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider magnetic-effect cursor-pointer active:scale-95 transition-all block">Connect</a>
+
+    <!-- Connect Button & Hamburger -->
+    <div class="flex items-center justify-end gap-2 md:gap-4 z-50 relative">
+      <a href="#protocol"
+        class="hidden md:block bg-white text-slate-950 px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider magnetic-effect cursor-pointer active:scale-95 transition-all">Connect</a>
+      <button id="mobile-menu-btn" class="md:hidden text-white flex items-center justify-center p-2 focus:outline-none transition-transform active:scale-95">
+        <span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-[#000814]/95 backdrop-blur-xl z-40 flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500 flex">
+    <div class="flex flex-col items-center gap-8 transform translate-y-8 transition-transform duration-500" id="mobile-menu-links">
+      <a class="font-['Plus_Jakarta_Sans'] tracking-widest uppercase text-xl font-bold text-white hover:text-primary transition-colors duration-500 mobile-link"
+        href="#telemetry">Experiencia</a>
+      <a class="font-['Plus_Jakarta_Sans'] tracking-widest uppercase text-xl font-bold text-white hover:text-primary transition-colors duration-500 mobile-link"
+        href="#network">Servicios</a>
+      <a class="font-['Plus_Jakarta_Sans'] tracking-widest uppercase text-xl font-bold text-white hover:text-primary transition-colors duration-500 mobile-link"
+        href="#vision">Vision</a>
+      <a href="#protocol"
+        class="bg-primary text-slate-950 px-8 py-3 mt-4 rounded-full text-sm font-bold uppercase tracking-wider magnetic-effect cursor-pointer active:scale-95 transition-all mobile-link">Connect</a>
+    </div>
+  </div>
   <!-- Hero Section -->
-  <section class="relative min-h-[100dvh] md:h-[1024px] w-full overflow-hidden">
+  <section class="relative min-h-[100dvh] md:h-[1024px] w-full overflow-hidden pt-24 md:pt-0">
     <div class="absolute inset-0 z-0">
       <img class="w-full h-full object-cover opacity-100"
         data-alt="A cinematic, low-angle shot of a massive, hyper-modern datacenter corridor filled with glowing blue server racks stretching into infinity. The lighting is moody and high-contrast, featuring deep blacks and electric blue highlights. Atmospheric mist caught in the light beams adds a sense of immense scale and technical mystery. The overall aesthetic is cold, precise, and sophisticated."
@@ -58,18 +81,14 @@
           <span class="font-display-lg text-4xl md:text-display-lg text-white leading-tight">Soluciones integrales</span>
           <span
             class="font-display-lg font-black text-5xl sm:text-7xl md:text-[100px] leading-none md:leading-tight text-primary uppercase tracking-tighter md:-mt-4">Infraestructura&nbsp;</span>
-          <span
-            class="text-terminal-green text-xs md:text-sm font-telemetry-data tracking-[0.2em] md:tracking-[0.3em] uppercase mt-2 animate-breathing">by
-            Cliks Informática</span>
+          <span class="text-terminal-green text-xs md:text-sm font-telemetry-data tracking-[0.2em] md:tracking-[0.3em] uppercase mt-2 animate-text-breathing">BY CLICKS INFORMÁTICA</span>
         </h1>
         <p class="text-on-surface-variant max-w-xl font-body-standard text-base md:text-lg opacity-80">Garantizamos interconectividad
           de máxima calidad, estabilidad y eficiencia para empresas y hogares inteligentes.</p>
-        <div class="pt-8">
-          <a href="#protocol"
-            class="group inline-flex items-center gap-4 bg-primary text-on-primary px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm magnetic-effect transition-all hover:bg-white hover:text-black">
-            Listos para el cambio?
-            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-          </a>
+        <div class="pt-8 flex sm:block justify-center">
+          <button id="hero-action-btn" class="group inline-flex items-center justify-center bg-primary text-on-primary w-16 h-16 rounded-full animate-breathing-button magnetic-effect transition-all hover:bg-white hover:text-black">
+          <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+        </button>
         </div>
       </div>
     </div>
@@ -86,14 +105,17 @@
           class="font-display-lg text-7xl md:text-[220px] font-black text-white uppercase tracking-tighter opacity-[0.08] absolute -top-10 md:-top-28 left-0 pointer-events-none select-none">
           Experiencia</h2>
         <div class="relative z-10 text-left">
-          <h3 class="font-display-lg text-4xl md:text-6xl text-white tracking-wider">Experiencia</h3>
-          <div class="h-1.5 w-32 bg-primary mt-4 shadow-[0_0_30px_rgba(169,199,255,0.8)] rounded-full"></div>
+          <span class="text-primary font-telemetry-data tracking-[0.3em] uppercase text-xs md:text-sm block opacity-60 mb-4">Módulo // Core</span>
+          <h3 class="font-display-lg font-black text-5xl sm:text-6xl md:text-8xl text-white tracking-tighter leading-[0.85] uppercase"
+            style="text-shadow: 0 0 80px rgba(169,199,255,0.15), 0 20px 60px rgba(0,0,0,0.6);">Expe<span class="text-primary">—</span><br>riencia</h3>
+          <div class="h-1.5 w-32 bg-primary mt-6 shadow-[0_0_30px_rgba(169,199,255,0.8)] rounded-full"></div>
         </div>
       </div>
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-gutter-grid">
         <!-- Feature 1: Experiencia -->
         <div class="lg:col-span-4 space-y-8">
-          <h2 class="font-headline-md text-2xl md:text-headline-md text-white">Protocolos</h2>
+          <h2 class="font-display-lg font-black text-3xl md:text-5xl text-white tracking-tighter uppercase"
+            style="text-shadow: 0 0 60px rgba(169,199,255,0.1), 0 10px 40px rgba(0,0,0,0.5);">Proto<span class="text-primary">colos</span></h2>
           <div class="space-y-4 relative h-[300px] overflow-hidden" id="exp-carousel">
             <div
               class="glass-panel p-8 rounded-xl absolute w-full transition-all duration-1000 opacity-0 translate-y-32 exp-card">
@@ -119,7 +141,8 @@
         <div
           class="lg:col-span-4 glass-panel p-6 md:p-container-padding rounded-xl grid grid-rows-[auto_1fr] gap-8 border-primary/20">
           <div class="grid grid-cols-[1fr_auto] items-center">
-            <h2 class="font-headline-md text-2xl md:text-headline-md text-white">Telemetría</h2>
+            <h2 class="font-display-lg font-black text-3xl md:text-5xl text-white tracking-tighter uppercase"
+              style="text-shadow: 0 0 60px rgba(169,199,255,0.1), 0 10px 40px rgba(0,0,0,0.5);">Tele<span class="text-primary">metría</span></h2>
             <div class="w-3 h-3 bg-emerald-400 rounded-full pulse-dot"></div>
           </div>
           <div
@@ -141,7 +164,8 @@
             </div>
           </div>
           <div class="p-8">
-            <h3 class="font-bold text-white mb-2">Conectividad</h3>
+            <h3 class="font-display-lg font-black text-2xl md:text-3xl text-white tracking-tighter uppercase mb-3"
+              style="text-shadow: 0 0 60px rgba(169,199,255,0.1), 0 10px 40px rgba(0,0,0,0.5);">Conecti<span class="text-primary">vidad</span></h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">NETSTAT -AR te asegura estar un paso adelante con
               una visualización en tiempo real de tu infraestructura crítica.</p>
           </div>
@@ -158,12 +182,12 @@
       </div>
       <div class="absolute inset-0 bg-black/40"></div>
       <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-margin-global grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-        <div class="space-y-6">
-          <span class="text-primary font-telemetry-data tracking-widest uppercase text-xs md:text-sm">Infraestructura</span>
-          <h2 class="font-display-lg text-5xl md:text-8xl text-white">Cableado &amp; Racks</h2>
-          <p class="text-on-surface-variant text-base md:text-lg">Precisión quirúrgica en cada conexión. Diseñamos el sistema
+        <div class="space-y-8 group">
+          <span class="text-primary font-telemetry-data tracking-[0.3em] uppercase text-xs md:text-sm block opacity-60 group-hover:opacity-100 transition-opacity duration-700">Protocol // 01</span>
+          <h2 class="font-display-lg font-black text-6xl sm:text-7xl md:text-9xl text-white tracking-tighter leading-[0.85] uppercase"
+            style="text-shadow: 0 0 80px rgba(169,199,255,0.15), 0 20px 60px rgba(0,0,0,0.6);">Cableado<br><span class="text-primary">&</span> Racks</h2>
+          <p class="text-on-surface-variant text-base md:text-xl leading-relaxed max-w-lg border-l-2 border-primary/40 pl-6 py-2">Precisión quirúrgica en cada conexión. Diseñamos el sistema
             circulatorio de tu empresa con estándares internacionales de categoría superior.</p>
-          <!-- Botón Ver Detalle quitado por solicitud del usuario -->
         </div>
       </div>
     </div>
@@ -174,10 +198,11 @@
       </div>
       <div class="absolute inset-0 bg-black/70"></div>
       <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-margin-global grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-        <div class="md:col-start-2 space-y-6 text-left bg-black/40 md:bg-black/20 p-6 md:p-8 rounded-2xl backdrop-blur-md md:backdrop-blur-sm">
-          <span class="text-primary font-telemetry-data tracking-widest uppercase text-xs md:text-sm">Networking</span>
-          <h1 class="font-display-lg text-4xl md:text-6xl text-white drop-shadow-lg">WAN | LAN | Wireless</h1>
-          <p class="text-white text-base md:text-lg leading-relaxed drop-shadow-md">Eliminamos la latencia del vocabulario de tu
+        <div class="md:col-start-2 space-y-8 text-left bg-black/60 md:bg-black/30 p-8 md:p-14 rounded-3xl backdrop-blur-xl border border-white/10 shadow-2xl transform transition-transform hover:scale-[1.02] duration-700 group">
+          <span class="text-primary font-telemetry-data tracking-[0.3em] uppercase text-xs md:text-sm block opacity-60 group-hover:opacity-100 transition-opacity duration-700">Protocol // 02</span>
+          <h1 class="font-display-lg font-black text-5xl sm:text-6xl md:text-8xl text-white tracking-tighter leading-[0.85] uppercase"
+            style="text-shadow: 0 0 80px rgba(169,199,255,0.15), 0 20px 60px rgba(0,0,0,0.6);">WAN <span class="text-primary">|</span> LAN<br>Wireless</h1>
+          <p class="text-white/70 text-base md:text-xl leading-relaxed mt-4">Eliminamos la latencia del vocabulario de tu
             organización. Conectividad invisible, constante y de alta velocidad en cualquier entorno.</p>
         </div>
       </div>
@@ -189,10 +214,11 @@
       </div>
       <div class="absolute inset-0 bg-black/40"></div>
       <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-margin-global grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
-        <div class="space-y-6">
-          <span class="text-primary font-telemetry-data tracking-widest uppercase text-xs md:text-sm">Domótica</span>
-          <h1 class="font-display-lg text-4xl md:text-6xl text-white">Hogar Inteligente</h1>
-          <p class="text-on-surface-variant text-base md:text-lg">La automatización al servicio de la comodidad. Control total de tu
+        <div class="space-y-8 group">
+          <span class="text-primary font-telemetry-data tracking-[0.3em] uppercase text-xs md:text-sm block opacity-60 group-hover:opacity-100 transition-opacity duration-700">Protocol // 03</span>
+          <h1 class="font-display-lg font-black text-6xl sm:text-7xl md:text-9xl text-white tracking-tighter leading-[0.85] uppercase"
+            style="text-shadow: 0 0 80px rgba(169,199,255,0.15), 0 20px 60px rgba(0,0,0,0.6);">Hogar<br><span class="text-primary">Inteligente</span></h1>
+          <p class="text-on-surface-variant text-base md:text-xl leading-relaxed max-w-lg border-l-2 border-primary/40 pl-6 py-2">La automatización al servicio de la comodidad. Control total de tu
             entorno mediante una interfaz minimalista y eficiente.</p>
         </div>
       </div>
@@ -202,8 +228,10 @@
   <section class="py-16 md:py-32 px-6 md:px-margin-global bg-surface-container-lowest" id="vision">
     <div class="max-w-4xl mx-auto space-y-12">
       <div class="text-center mb-12 md:mb-20">
-        <h2 class="font-headline-md text-4xl md:text-6xl text-white mb-4">Nuestra Visión</h2>
-        <div class="h-1 w-24 bg-primary mx-auto"></div>
+        <span class="text-primary font-telemetry-data tracking-[0.3em] uppercase text-xs md:text-sm block opacity-60 mb-4">Perspectiva // Futuro</span>
+        <h2 class="font-display-lg font-black text-5xl sm:text-6xl md:text-8xl text-white tracking-tighter leading-[0.85] uppercase mb-6"
+          style="text-shadow: 0 0 80px rgba(169,199,255,0.15), 0 20px 60px rgba(0,0,0,0.6);">Nuestra<br><span class="text-primary">Visión</span></h2>
+        <div class="h-1.5 w-24 bg-primary mx-auto shadow-[0_0_30px_rgba(169,199,255,0.8)] rounded-full"></div>
       </div>
       <!-- Card 1 -->
       <div
@@ -227,7 +255,8 @@
         <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent"></div>
         <div class="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-8 md:gap-12 text-center md:text-left">
           <div>
-            <h3 class="font-headline-md text-xl md:text-2xl text-white mb-4">Escaneo Láser</h3>
+            <h3 class="font-display-lg font-black text-2xl md:text-4xl text-white tracking-tighter uppercase mb-4"
+              style="text-shadow: 0 0 60px rgba(169,199,255,0.1), 0 10px 40px rgba(0,0,0,0.5);">Escaneo <span class="text-primary">Láser</span></h3>
             <p class="text-on-surface-variant text-sm md:text-base">Análisis exhaustivo de vulnerabilidades y rendimiento de red mediante
               hardware de última generación.</p>
           </div>
@@ -242,7 +271,8 @@
         class="glass-panel p-8 md:p-16 rounded-xl relative overflow-hidden transition-all duration-500 sticky top-32 md:top-56 bg-surface-container scale-[0.95]">
         <div class="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-8 md:gap-12 text-center md:text-left">
           <div>
-            <h3 class="font-headline-md text-xl md:text-2xl text-white mb-4">Pulso Dinámico</h3>
+            <h3 class="font-display-lg font-black text-2xl md:text-4xl text-white tracking-tighter uppercase mb-4"
+              style="text-shadow: 0 0 60px rgba(169,199,255,0.1), 0 10px 40px rgba(0,0,0,0.5);">Pulso <span class="text-primary">Dinámico</span></h3>
             <p class="text-on-surface-variant text-sm md:text-base">Monitorización constante que garantiza el latido vital de tus operaciones
               críticas sin interrupciones.</p>
           </div>
@@ -259,8 +289,8 @@
       <div class="glass-panel p-6 md:p-20 rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 overflow-hidden relative">
         <div class="absolute -right-20 -top-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
         <div class="space-y-8 relative z-10">
-          <h2 class="font-display-lg text-4xl md:text-5xl text-white">Iniciemos el <br><span
-              class="text-primary italic font-drama-italic">Protocolo.</span></h2>
+          <h2 class="font-display-lg font-black text-5xl sm:text-6xl md:text-7xl text-white tracking-tighter leading-[0.85] uppercase"
+            style="text-shadow: 0 0 80px rgba(169,199,255,0.15), 0 20px 60px rgba(0,0,0,0.6);">Iniciemos<br>el <span class="text-primary italic font-drama-italic">Protocolo.</span></h2>
           <p class="text-on-surface-variant max-w-md text-sm md:text-base">Contáctanos para una auditoría personalizada de tu infraestructura
             técnica. Estamos listos para elevar tus estándares.</p>
           <div class="grid gap-6 pt-8">
@@ -280,7 +310,7 @@
             </div>
           </div>
         </div>
-        <form class="space-y-6 relative z-10">
+        <form action="mailto:castro.leonardo82@gmail.com" method="post" enctype="text/plain" class="space-y-6 relative z-10">
           <div class="space-y-2">
             <label class="font-telemetry-data text-xs uppercase text-white/40 ml-4">Nombre</label>
             <input
